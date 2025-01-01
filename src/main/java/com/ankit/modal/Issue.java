@@ -1,5 +1,6 @@
 package com.ankit.modal;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -21,6 +22,8 @@ public class Issue {
     private String status;
     private Long projectID;
     private String priority;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dueDate;
     private List<String> tags = new ArrayList<>();
 
