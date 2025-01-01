@@ -82,9 +82,9 @@ public class ProjectController {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
-    @GetMapping("/search/{keyword}")
+    @GetMapping("/search")
     public ResponseEntity<List<Project>> searchProjects(
-            @RequestParam(required = false) String keyword,
+            @RequestParam(value = "keyword", required = false) String keyword,
             @RequestHeader("Authorization") String jwt
     ) throws Exception {
         User user = userService.findUserProfileByJwt(jwt);

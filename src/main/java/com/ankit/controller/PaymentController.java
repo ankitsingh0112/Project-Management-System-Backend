@@ -33,7 +33,7 @@ public class PaymentController {
             @RequestHeader("Authorization") String jwt
             ) throws Exception {
         User user = userService.findUserProfileByJwt(jwt);
-        int amount = 799*100;
+        int amount = 99*100;
         if(planType.equals(PlanType.ANNUALLY)) {
             amount = amount*12;
             amount = (int)(amount*0.7);
@@ -43,7 +43,7 @@ public class PaymentController {
 
         JSONObject paymentLinkRequest = new JSONObject();
         paymentLinkRequest.put("amount", amount);
-        paymentLinkRequest.put("currency", " INR");
+        paymentLinkRequest.put("currency", "INR");
 
         JSONObject customer = new JSONObject();
         customer.put("name", user.getFullName());
@@ -54,7 +54,7 @@ public class PaymentController {
         notify.put("email", true);
         paymentLinkRequest.put("notify", notify);
 
-        paymentLinkRequest.put("callback_url","http://localhost:8080/upgrade_plan/success?planType"+planType);
+        paymentLinkRequest.put("callback_url","http://localhost:5173/upgrade_plan/success?planType="+planType);
 
         PaymentLink payment = razorpay.paymentLink.create(paymentLinkRequest);
 
