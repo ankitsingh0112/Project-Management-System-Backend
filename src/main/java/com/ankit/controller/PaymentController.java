@@ -54,7 +54,7 @@ public class PaymentController {
         notify.put("email", true);
         paymentLinkRequest.put("notify", notify);
 
-        paymentLinkRequest.put("callback_url","https://loyal-inspiration-production.up.railway.app/upgrade_plan/success?planType="+planType);
+        paymentLinkRequest.put("callback_url","https://project-management-system-backen-production.up.railway.app/upgrade_plan/success?planType="+planType);
 
         PaymentLink payment = razorpay.paymentLink.create(paymentLinkRequest);
 
